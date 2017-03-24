@@ -20,8 +20,10 @@ AssetHandler class -- for handling IGC Flow Documents (XML) with the purpose of 
 // create an XML flow document with a new asset instance
 var igcext = require('ibm-igc-extensions');
 var ah = new igcext.AssetHandler();
-
-ah.parseXML(xmlString);
+ah.addAsset('$MyBundle-ClassName', 'AssetInstanceName', '123', {
+   "short_description": "This is a short description of my asset",
+   "$newField": "This is the value for a field that only exists in this bundle (and class)"
+});
 ```
 
 ### parseXML
