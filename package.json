@@ -1,0 +1,52 @@
+{
+  "name": "ibm-igc-extensions",
+  "version": "0.1.0",
+  "description": "Re-usable functions for extending IBM Information Governance Catalog (i.e. OpenIGC)",
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "xmldom": ">=0.1.22",
+    "xpath": ">=0.0.23"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.4.0",
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5"
+  },
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "scripts": {
+    "test": "jshint --exclude ./node_modules/",
+    "doc": "jsdoc -c jsdoc/config.json"
+  },
+  "keywords": [
+    "ibm",
+    "igc",
+    "extension",
+    "information server",
+    "information governance catalog",
+    "openigc"
+  ],
+  "author": {
+    "name": "IBM Corp."
+  },
+  "contributors": [
+    {
+      "name": "Christopher Grote",
+      "email": "chris@thegrotes.net"
+    }
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmgrote/ibm-igc-extensions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cmgrote/ibm-igc-extensions/issues"
+  },
+  "homepage": "https://github.com/cmgrote/ibm-igc-extensions"
+}
