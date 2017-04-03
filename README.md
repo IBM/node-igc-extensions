@@ -144,3 +144,55 @@ Adds an import action to the flow XML (to actually create the assets)
 Retrieves the flow XML, including any modifications that have been made (added assets)
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the full XML of the flow document
+
+## BundleHandler
+
+BundleHandler class -- for handling IGC Bundle definitions with the purpose of creating or updating asset type definitions
+
+**Examples**
+
+```javascript
+// create an OpenIGC bundle with a new asset type definition
+var igcext = require('ibm-igc-extensions');
+var bh = new igcext.BundleHandler('.../ibm-igc-x-json');
+bh.createBundleZip(function(err, pathToZip) {
+  console.log("The bundle zip file is here: " + pathToZip);
+});
+```
+
+### constructor
+
+Retrieves the flow XML, including any modifications that have been made (added assets)
+
+**Parameters**
+
+-   `basePath` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the base path of the bundle to create (i.e. directory containing 'asset_type_descriptor.xml')
+
+### validateBundle
+
+Does some basic validation of the bundle (e.g. ensuring all classes have icons and label translations)
+
+**Parameters**
+
+-   `logIssues` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** if true, any issues identified are console.log'd
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if all checks pass, false otherwise
+
+### createBundleZip
+
+Retrieves the flow XML, including any modifications that have been made (added assets)
+
+**Parameters**
+
+-   `callback` **[bundleCallback](#bundlecallback)** callback that is invoked once ZIP file is created
+
+## bundleCallback
+
+This callback is invoked as the result of a bundle ZIP file being created, providing the path to the file.
+
+Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `errorMessage` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** any error message, or null if no errors
+-   `path` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the file system path in which the ZIP file was created
