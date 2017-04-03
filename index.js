@@ -27,7 +27,9 @@
  */
 
 const AssetHandler = require('./classes/asset-handler');
+const BundleHandler = require('./classes/bundle-handler');
 
 if (typeof require === 'function') {
   exports.AssetHandler = AssetHandler;
+  exports.BundleHandler = BundleHandler;
 }
