@@ -65,6 +65,7 @@ const argv = yargs
 const bundleDir = argv.directory;
 
 const envCtx = new commons.EnvironmentContext(null, argv.authfile);
+prompt.override = argv;
 
 const inputPrompt = {
   properties: {
