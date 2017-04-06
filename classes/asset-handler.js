@@ -214,7 +214,21 @@ class AssetHandler {
       if (objAttrs.hasOwnProperty(key) && key !== 'name') {
         const eAttr = this._doc.createElement("attribute");
         eAttr.setAttribute("name", key);
-        eAttr.setAttribute("value", objAttrs[key]);
+        let val = objAttrs[key];
+        if (Array.isArray(val)) {
+          for (let k = 0; k < val.length; k++) {
+            const singleVal = val[k];
+            const txt = this._doc.createTextNode(singleVal);
+            const eSingleVal = this._doc.createElement("multiValueItem");
+            eSingleVal.appendChild(txt);
+            eAttr.appendChild(eSingleVal);
+          }
+        } else if (typeof val === 'string') {
+          val = val.replace(/\n/g, ' ');
+          eAttr.setAttribute("value", val);
+        } else {
+          eAttr.setAttribute("value", val);
+        }
         eAsset.appendChild(eAttr);
       }
     }
