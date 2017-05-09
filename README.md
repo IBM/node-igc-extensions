@@ -168,6 +168,10 @@ Retrieves the flow XML, including any modifications that have been made (added a
 
 -   `basePath` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the base path of the bundle to create (i.e. directory containing 'asset_type_descriptor.xml')
 
+### generateLabels
+
+Generates the default labels based on all of the default locale descriptions provided in the asset definition
+
 ### validateBundle
 
 Does some basic validation of the bundle (e.g. ensuring all classes have icons and label translations)
