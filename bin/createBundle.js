@@ -40,7 +40,7 @@ prompt.colors = false;
 // Command-line setup
 const yargs = require('yargs');
 const argv = yargs
-    .usage('Usage: $0 -d <path> -a <authfile> -p <password>')
+    .usage('Usage: $0 -d <path> -a <authfile> -p <password> -g')
     .option('d', {
       alias: 'directory',
       describe: 'Input directory from which to read Open IGC bundle definition',
@@ -55,6 +55,11 @@ const argv = yargs
       alias: 'password',
       describe: 'Password for invoking REST API',
       demand: false, requiresArg: true, type: 'string'
+    })
+    .option('g', {
+      alias: 'generate',
+      describe: 'Generate labels file',
+      demand: false, requiresArg: false, type: 'boolean'
     })
     .help('h')
     .alias('h', 'help')
@@ -84,6 +89,9 @@ prompt.get(inputPrompt, function (errPrompt, result) {
   igcrest.setConnection(envCtx.getRestConnection(result.password));
 
   const bh = new igcext.BundleHandler(bundleDir);
+  if (argv.generate) {
+    bh.generateLabels();
+  }
   if (bh.validateBundle(true)) {
     bh.createBundleZip(function(err, pathToZip) {
       console.log("The bundle zip file is here: " + pathToZip);

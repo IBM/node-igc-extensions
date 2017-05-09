@@ -67,6 +67,41 @@ class BundleHandler {
   }
 
   /**
+   * Generates the default labels based on all of the default locale descriptions provided in the asset definition
+   *
+   * @function
+   */
+  generateLabels() {
+
+    const labelsDir  = this._basePath + path.sep + "i18n" + path.sep;
+    const labelsFile = labelsDir + "labels.properties";
+
+    let labelsString = "";
+
+    const aLabels = this._doc.getElementsByTagName("label");
+    for (let i = 0; i < aLabels.length; i++) {
+      const nLabel = aLabels[i];
+      const labelKey  = nLabel.getAttribute("key");
+      const labelDesc = nLabel.getAttribute("inDefaultLocale");
+      labelsString += labelKey + "=" + labelDesc + "\n";
+    }
+
+    const aPlurals = this._doc.getElementsByTagName("pluralLabel");
+    for (let i = 0; i < aPlurals.length; i++) {
+      const nLabel = aPlurals[i];
+      const labelKey  = nLabel.getAttribute("key");
+      const labelDesc = nLabel.getAttribute("inDefaultLocale");
+      labelsString += labelKey + "=" + labelDesc + "\n";
+    }
+
+    if (fs.existsSync(labelsFile)) {
+      fs.renameSync(labelsFile, labelsDir + "labels.properties.backup");
+    }
+    fs.writeFileSync(labelsFile, labelsString, { encoding: 'utf8' });
+
+  }
+
+  /**
    * Does some basic validation of the bundle (e.g. ensuring all classes have icons and label translations)
    *
    * @function
