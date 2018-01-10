@@ -24,7 +24,7 @@
     "mocha": "^2.4.5"
   },
   "bin": {
-    "createBundle": "bin/createBundle.js",
+    "upsertBundle": "bin/upsertBundle.js",
     "loadAssetInstances": "bin/loadAssetInstances.js"
   },
   "engines": {

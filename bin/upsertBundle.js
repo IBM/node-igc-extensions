@@ -61,6 +61,16 @@ const argv = yargs
       describe: 'Generate labels file',
       demand: false, requiresArg: false, type: 'boolean'
     })
+    .option('c', {
+      alias: 'create',
+      describe: 'Force creation',
+      demand: false, requiresArg: false, type: 'boolean'
+    })
+    .option('u', {
+      alias: 'update',
+      describe: 'Force update',
+      demand: false, requiresArg: false, type: 'boolean'
+    })
     .help('h')
     .alias('h', 'help')
     .wrap(yargs.terminalWidth())
@@ -95,16 +105,41 @@ prompt.get(inputPrompt, function (errPrompt, result) {
   if (bh.validateBundle(true)) {
     bh.createBundleZip(function(err, pathToZip) {
       console.log("The bundle zip file is here: " + pathToZip);
-      igcrest.createBundle(pathToZip, function(errCreate, resCreate) {
-        if (errCreate !== null) {
-          console.error("ERROR: Creating bundle failed -- " + errCreate);
-        } else {
-          console.log("Bundle successfully created: " + JSON.stringify(resCreate));
-        }
-      });
+
+      if (argv.create) {
+        create(pathToZip);
+      } else if (argv.update) {
+        update(pathToZip);
+      } else {
+        // Only look for whether bundle exists already if we are not forced into a
+        // create or update by the command-line
+        igcrest.getBundles().then(function(results) {
+          if (results.indexOf(bh.bundleId) == -1) {
+            create(pathToZip);
+          } else {
+            update(pathToZip);
+          }
+        });
+      }
     });
   } else {
     process.exit(1);
   }
 
 });
+
+function create(pathToZip) {
+  igcrest.createBundle(pathToZip).then(function(results) {
+    console.log("Bundle successfully created: " + JSON.stringify(results));
+  }, function(rejectReason) {
+    console.error("ERROR: Creating bundle failed -- " + rejectReason);
+  });
+}
+
+function update(pathToZip) {
+  igcrest.updateBundle(pathToZip).then(function(results) {
+    console.log("Bundle successfully updated: " + JSON.stringify(results));
+  }, function(rejectReason) {
+    console.error("ERROR: Updating bundle failed -- " + rejectReason);
+  });
+}

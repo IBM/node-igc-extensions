@@ -67,6 +67,14 @@ class BundleHandler {
   }
 
   /**
+   * Get the hostname for the REST connection
+   * @return {string}
+   */
+  get bundleId() {
+    return this._bundleId;
+  }
+
+  /**
    * Generates the default labels based on all of the default locale descriptions provided in the asset definition
    *
    * @function
