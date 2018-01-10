@@ -35,7 +35,7 @@
  */
 
 const commons = require('ibm-iis-commons');
-const fs = require('fs-extra');
+const fs = require('fs');
 const pd = require('pretty-data').pd;
 const igcrest = require('ibm-igc-rest');
 const prompt = require('prompt');
