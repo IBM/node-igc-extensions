@@ -45,21 +45,11 @@ prompt.colors = false;
 const yargs = require('yargs');
 const argv = yargs
     .usage('Usage: $0 -f <path> -a <authfile> -p <password>')
-    .option('f', {
-      alias: 'file',
-      describe: 'XML flow document file',
-      demand: true, requiresArg: true, type: 'string'
-    })
-    .option('a', {
-      alias: 'authfile',
-      describe: 'Authorisation file containing environment context',
-      requiresArg: true, type: 'string'
-    })
-    .option('p', {
-      alias: 'password',
-      describe: 'Password for invoking REST API',
-      demand: false, requiresArg: true, type: 'string'
-    })
+    .example('$0 -f assets.xml', 'loads IGC asset instances from assets.xml (and default credentials in ~/infosvrauth)')
+    .alias('f', 'file').nargs('f', 1).describe('f', 'XML flow document file defining asset instances')
+    .alias('a', 'authfile').nargs('a', 1).describe('a', 'Authorisation file containing environment context')
+    .alias('p', 'password').nargs('p', 1).describe('p', 'Password for invoking REST API')
+    .demandOption(['f'])
     .help('h')
     .alias('h', 'help')
     .wrap(yargs.terminalWidth())

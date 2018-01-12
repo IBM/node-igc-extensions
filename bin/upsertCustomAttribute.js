@@ -43,26 +43,12 @@ prompt.colors = false;
 const yargs = require('yargs');
 const argv = yargs
     .usage('Usage: $0 -f <path> -a <authfile> -p <password>')
-    .option('f', {
-      alias: 'file',
-      describe: 'Input file (JSON) from which to read IGC Custom Attribute definition',
-      demand: true, requiresArg: true, type: 'string'
-    })
-    .option('a', {
-      alias: 'authfile',
-      describe: 'Authorisation file containing environment context',
-      requiresArg: true, type: 'string'
-    })
-    .option('p', {
-      alias: 'password',
-      describe: 'Password for invoking REST API',
-      demand: false, requiresArg: true, type: 'string'
-    })
-    .option('c', {
-      alias: 'create',
-      describe: 'Force creation',
-      demand: false, requiresArg: false, type: 'boolean'
-    })
+    .example('$0 -f .../MyCustomAttr.json', 'creates a custom attribute from the contents of .../MyCustomAttr.json')
+    .alias('f', 'file').nargs('f', 1).describe('f', 'Input file (JSON) from which to read IGC Custom Attribute definition')
+    .alias('a', 'authfile').nargs('a', 1).describe('a', 'Authorisation file containing environment context')
+    .alias('p', 'password').nargs('p', 1).describe('p', 'Password for invoking REST API')
+    .boolean('c').alias('c', 'create').describe('c', 'Force creation')
+    .demandOption(['f'])
     .help('h')
     .alias('h', 'help')
     .wrap(yargs.terminalWidth())

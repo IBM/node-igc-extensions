@@ -16,7 +16,7 @@
     "prompt": "^1.0.0",
     "xmldom": ">=0.1.22",
     "xpath": ">=0.0.23",
-    "yargs": ">=6.6.0",
+    "yargs": ">=10.0.0",
     "underscore": ">=1.8.3"
   },
   "devDependencies": {
