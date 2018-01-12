@@ -86,6 +86,8 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ### getTableIdentity
 
+-   **See: module:ibm-igc-lineage~FlowHandler#getParentAssetId**
+
 Gets the identity string (externalID) for the provided database table
 
 **Parameters**
@@ -97,6 +99,8 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ### getColumnIdentity
 
+-   **See: module:ibm-igc-lineage~FlowHandler#getParentAssetId**
+
 Gets the identity string (externalID) for the provided database column
 
 **Parameters**
@@ -107,6 +111,8 @@ Gets the identity string (externalID) for the provided database column
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### getColumnIdentityFromTableIdentity
+
+-   **See: module:ibm-igc-lineage~FlowHandler#getTableIdentity**
 
 Gets the database column identity string (externalID) from an existing database table identity string
 
@@ -141,6 +147,8 @@ Adds an import action to the flow XML (to actually create the assets)
 
 ### getCustomisedXML
 
+-   **See: module:ibm-igc-extensions~AssetHandler#addAsset**
+
 Retrieves the flow XML, including any modifications that have been made (added assets)
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the full XML of the flow document
@@ -148,6 +156,10 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 ## BundleHandler
 
 BundleHandler class -- for handling IGC Bundle definitions with the purpose of creating or updating asset type definitions
+
+**Parameters**
+
+-   `basePath`  
 
 **Examples**
 
@@ -167,6 +179,12 @@ Retrieves the flow XML, including any modifications that have been made (added a
 **Parameters**
 
 -   `basePath` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the base path of the bundle to create (i.e. directory containing 'asset_type_descriptor.xml')
+
+### bundleId
+
+Get the hostname for the REST connection
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### generateLabels
 
