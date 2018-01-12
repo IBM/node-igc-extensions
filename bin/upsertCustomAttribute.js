@@ -122,6 +122,9 @@ prompt.get(inputPrompt, function (errPrompt, result) {
             create(defn);
           }
         }
+      } else {
+        // and if none were found, it's also a create
+        create(defn);
       }
     });
   }
