@@ -1,6 +1,6 @@
 {
   "name": "ibm-igc-extensions",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Re-usable functions for extending IBM Information Governance Catalog (i.e. OpenIGC)",
   "main": "./index.js",
   "files": [
