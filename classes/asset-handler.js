@@ -18,6 +18,9 @@
 
 const xmldom = require('xmldom');
 const xpath = require('xpath');
+const _ = require('underscore');
+
+const regexRemove = /[^\w \(\),.{}\[\]\:\/\-\#]/g;
 
 /**
  * AssetHandler class -- for handling IGC Flow Documents (XML) with the purpose of creating or updating asset instances
@@ -218,13 +221,13 @@ class AssetHandler {
         if (Array.isArray(val)) {
           for (let k = 0; k < val.length; k++) {
             const singleVal = val[k];
-            const txt = this._doc.createTextNode(singleVal);
+            const txt = this._doc.createTextNode(_.escape(singleVal));
             const eSingleVal = this._doc.createElement("multiValueItem");
             eSingleVal.appendChild(txt);
             eAttr.appendChild(eSingleVal);
           }
         } else if (typeof val === 'string') {
-          val = val.replace(/\n/g, ' ');
+          val = val.replace(regexRemove, ' ');
           eAttr.setAttribute("value", val);
         } else {
           eAttr.setAttribute("value", val);
