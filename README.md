@@ -23,7 +23,7 @@ The utility can also generate the labels file for you based on the labels you ha
 
 By default (if not specified using the optional `-a` parameter), the utility will look for environment details in `~/.infosvrauth` and will prompt the user for a password.
 
-The authorisation file can be generated using the <https://npmjs.com/package/ibm-iis-commons> module.  Refer to the `createInfoSvrAuthFile.js` utility there for more details.s
+The authorisation file can be generated using the <https://npmjs.com/package/ibm-iis-commons> module.  Refer to the `createInfoSvrAuthFile.js` utility there for more details.
 
 ##### Examples:
 
@@ -52,7 +52,7 @@ Uses the definitions of asset instances in the provided XML file to create (or u
 
 By default (if not specified using the optional `-a` parameter), the utility will look for environment details in `~/.infosvrauth` and will prompt the user for a password.
 
-The authorisation file can be generated using the <https://npmjs.com/package/ibm-iis-commons> module.  Refer to the `createInfoSvrAuthFile.js` utility there for more details.s
+The authorisation file can be generated using the <https://npmjs.com/package/ibm-iis-commons> module.  Refer to the `createInfoSvrAuthFile.js` utility there for more details.
 
 ##### Examples:
 
