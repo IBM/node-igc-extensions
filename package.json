@@ -55,10 +55,10 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cmgrote/ibm-igc-extensions.git"
+    "url": "https://github.com/IBM/node-igc-extensions.git"
   },
   "bugs": {
-    "url": "https://github.com/cmgrote/ibm-igc-extensions/issues"
+    "url": "https://github.com/IBM/node-igc-extensions/issues"
   },
-  "homepage": "https://github.com/cmgrote/ibm-igc-extensions"
+  "homepage": "https://github.com/IBM/node-igc-extensions"
 }
